@@ -22,9 +22,5 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-xml:9.0.2.v20130417" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-servlet:9.0.2.v20130417" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-security:9.0.2.v20130417" level="project" />
-    <orderEntry type="library" name="Maven: com.sparkjava:spark-template-freemarker:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.19" level="project" />
-    <orderEntry type="library" name="Maven: org.postgresql:postgresql:9.4-1201-jdbc4" level="project" />
-    <orderEntry type="library" name="Maven: com.heroku.sdk:heroku-jdbc:0.1.1" level="project" />
   </component>
 </module>
