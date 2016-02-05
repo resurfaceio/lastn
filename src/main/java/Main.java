@@ -3,8 +3,7 @@
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
+import static spark.Spark.*;
 
 public class Main {
 
@@ -14,13 +13,13 @@ public class Main {
         LinkedList<String> queue = new LinkedList<>();
         ReentrantReadWriteLock queueLock = new ReentrantReadWriteLock();
 
-        get("/read", (req, res) -> {
-            StringBuilder sb = new StringBuilder();
+        get("/messages", (request, response) -> {
+            StringBuilder sb = new StringBuilder(1024);
             queueLock.readLock().lock();
             try {
-                for (String json : queue) {
+                for (String s : queue) {
                     sb.append("<p><code>");
-                    sb.append(json);
+                    sb.append(s);
                     sb.append("</code></p>");
                 }
             } finally {
@@ -29,18 +28,17 @@ public class Main {
             return sb.toString();
         });
 
-        get("/write", (req, res) -> {
+        post("/messages", (request, response) -> {
             queueLock.writeLock().lock();
             try {
-                if (queue.size() == LIMIT) queue.removeLast();
-                queue.addFirst(String.valueOf(System.currentTimeMillis()));
-                return "OK";
+                queue.addFirst(request.body());
+                if (queue.size() == 6) queue.removeLast();
             } finally {
                 queueLock.writeLock().unlock();
             }
+            halt(200);
+            return null;
         });
 
     }
-
-    private static final int LIMIT = 5;
 }
