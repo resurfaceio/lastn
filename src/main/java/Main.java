@@ -5,10 +5,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import static spark.Spark.*;
 
+/**
+ * REST service that tracks last n messages.
+ */
 public class Main {
 
     public static void main(String[] args) {
-        port(Integer.valueOf(System.getenv("PORT")));
+        String portstr = System.getenv("PORT");
+        port(Integer.valueOf(portstr == null ? "9000" : portstr));
 
         LinkedList<String> queue = new LinkedList<>();
         ReentrantReadWriteLock queueLock = new ReentrantReadWriteLock();
