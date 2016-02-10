@@ -3,28 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>io.resurface</groupId>
     <artifactId>resurfaceio-lastn</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <dependencies>
-        <dependency>
-            <groupId>com.sparkjava</groupId>
-            <artifactId>spark-core</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>fluent-hc</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <name>resurfaceio-lastn</name>
+    <description>Tracks last n messages</description>
+    <url>https://github.com/resurfaceio/resurfaceio-lastn</url>
+
     <build>
         <plugins>
             <plugin>
@@ -54,4 +40,71 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <developers>
+        <developer>
+            <id>RobDickinson</id>
+            <name>Rob Dickinson</name>
+            <email>resurfacelabs@gmail.com</email>
+            <url>https://github.com/RobDickinson</url>
+            <organization>resurface.io</organization>
+            <organizationUrl>http://resurface.io</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Denver</timezone>
+            <properties>
+                <picUrl>http://resurface.io/headshot_rob_128.jpg</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/resurfaceio/resurfaceio-lastn/issues</url>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <organization>
+        <name>resurface.io</name>
+        <url>http://resurface.io</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:git@github.com:resurfaceio/resurfaceio-lastn.git</connection>
+        <developerConnection>scm:git:git@github.com:resurfaceio/resurfaceio-lastn.git</developerConnection>
+        <url>scm:git:git@github.com:resurfaceio/resurfaceio-lastn.git</url>
+    </scm>
 </project>
