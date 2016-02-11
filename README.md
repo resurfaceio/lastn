@@ -13,6 +13,10 @@
     git pull
     git push origin master
 
+## Build System 
+
+Standard Maven for building & testing code, nothing special.
+
 ## Running Locally
 
     cd ~/resurfaceio-lastn
