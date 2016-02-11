@@ -21,11 +21,7 @@ public class Main {
             StringBuilder sb = new StringBuilder(1024);
             queueLock.readLock().lock();
             try {
-                for (String s : queue) {
-                    sb.append("<p><code>");
-                    sb.append(s);
-                    sb.append("</code></p>");
-                }
+                queue.forEach(item -> sb.append("<p><code>").append(item).append("</code></p>"));
             } finally {
                 queueLock.readLock().unlock();
             }
