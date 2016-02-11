@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import static spark.Spark.*;
 
 /**
- * REST service that tracks last n messages.
+ * App that tracks last n messages.
  */
 public class Main {
 
@@ -21,6 +21,7 @@ public class Main {
             StringBuilder sb = new StringBuilder(1024);
             queueLock.readLock().lock();
             try {
+                sb.append("<h1>").append(queue.size()).append(" messages</h1>");
                 queue.forEach(item -> sb.append("<p><code>").append(item).append("</code></p>"));
             } finally {
                 queueLock.readLock().unlock();

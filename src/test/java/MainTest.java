@@ -12,7 +12,7 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests against REST service that tracks last n messages.
+ * Tests against app that tracks last n messages.
  */
 public class MainTest {
 
@@ -38,21 +38,21 @@ public class MainTest {
 
     @Test
     public void testReadAndWrite() throws IOException {
-        assertEquals(get(), "");
+        assertEquals(get(), "<h1>0 messages</h1>");
         assertEquals(post("A"), 200);
-        assertEquals(get(), "<p><code>A</code></p>");
+        assertEquals(get(), "<h1>1 messages</h1><p><code>A</code></p>");
         assertEquals(post("B"), 200);
-        assertEquals(get(), "<p><code>B</code></p><p><code>A</code></p>");
+        assertEquals(get(), "<h1>2 messages</h1><p><code>B</code></p><p><code>A</code></p>");
         assertEquals(post("C"), 200);
-        assertEquals(get(), "<p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
+        assertEquals(get(), "<h1>3 messages</h1><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
         assertEquals(post("D"), 200);
-        assertEquals(get(), "<p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
+        assertEquals(get(), "<h1>4 messages</h1><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
         assertEquals(post("E"), 200);
-        assertEquals(get(), "<p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
+        assertEquals(get(), "<h1>5 messages</h1><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
         assertEquals(post("F2"), 200);
-        assertEquals(get(), "<p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p>");
+        assertEquals(get(), "<h1>5 messages</h1><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p>");
         assertEquals(post("G G!"), 200);
-        assertEquals(get(), "<p><code>G G!</code></p><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p>");
+        assertEquals(get(), "<h1>5 messages</h1><p><code>G G!</code></p><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p>");
     }
 
 }
