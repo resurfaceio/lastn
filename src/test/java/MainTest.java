@@ -12,7 +12,7 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests against app that tracks last n messages.
+ * Tests against Heroku app that tracks last n messages.
  */
 public class MainTest {
 
@@ -24,16 +24,6 @@ public class MainTest {
     @AfterClass
     public static void afterClass() {
         Spark.stop();
-    }
-
-    private static final String URL = "http://localhost:9000/messages";
-
-    private String get() throws IOException {
-        return Request.Get(URL).execute().returnContent().asString();
-    }
-
-    private int post(String body) throws IOException {
-        return Request.Post(URL).bodyString(body, ContentType.DEFAULT_TEXT).execute().returnResponse().getStatusLine().getStatusCode();
     }
 
     @Test
@@ -54,5 +44,15 @@ public class MainTest {
         assertEquals(post("G G!"), 200);
         assertEquals(get(), "<h1>5 messages</h1><p><code>G G!</code></p><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p>");
     }
+
+    private String get() throws IOException {
+        return Request.Get(URL).execute().returnContent().asString();
+    }
+
+    private int post(String body) throws IOException {
+        return Request.Post(URL).bodyString(body, ContentType.DEFAULT_TEXT).execute().returnResponse().getStatusLine().getStatusCode();
+    }
+
+    private static final String URL = "http://localhost:9000/messages";
 
 }

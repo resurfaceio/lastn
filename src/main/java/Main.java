@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import static spark.Spark.*;
 
 /**
- * App that tracks last n messages.
+ * Heroku app that tracks last n messages.
  */
 public class Main {
 
@@ -40,6 +40,6 @@ public class Main {
             halt(200);
             return null;
         });
-
     }
+
 }
