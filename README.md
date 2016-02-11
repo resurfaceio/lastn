@@ -19,7 +19,7 @@
 
 ## Viewing Messages
 
-http://localhost:5000/messages  (blank if nothing has been sent yet)
+http://localhost:5000/messages
 
 ## Sending Messages
 
