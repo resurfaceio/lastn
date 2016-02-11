@@ -1,7 +1,7 @@
 # resurfaceio-lastn
 &copy; 2016 Resurface Labs LLC, All Rights Reserved
 
-## Basic Workflow 
+## Git Workflow 
 
     git clone git@github.com:resurfaceio/resurfaceio-lastn.git ~/resurfaceio-lastn
     cd ~/resurfaceio-lastn
@@ -31,8 +31,6 @@ Standard Maven for building & testing code, nothing special.
     browse to http://{appname}.herokuapp.com/messages
 
 ## Sending Messages
-
-Using curl:
 
     echo 'hello' | curl -X POST -d @- http://localhost:5000/messages
 
