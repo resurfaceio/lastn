@@ -25,7 +25,7 @@ http://localhost:5000/messages  (blank if nothing has been sent yet)
 
 Using curl:
 
-    echo ‘hello’ | curl -X POST -d @- http://localhost:5000/messages
+    echo 'hello' | curl -X POST -d @- http://localhost:5000/messages
 
 Using Java API: https://github.com/resurfaceio/resurfaceio-logger-java
 
