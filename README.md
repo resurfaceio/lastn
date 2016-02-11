@@ -15,11 +15,16 @@
 
 ## Running Locally
 
+    cd ~/resurfaceio-lastn
     heroku local
+    browse to http://localhost:5000/messages
 
-## Viewing Messages
+## Running at Heroku
 
-http://localhost:5000/messages
+    cd ~/resurfaceio-lastn
+    heroku create {appname}
+    git push heroku master
+    browse to http://{appname}.herokuapp.com/messages
 
 ## Sending Messages
 
@@ -30,11 +35,3 @@ Using curl:
 Using Java API: https://github.com/resurfaceio/resurfaceio-logger-java
 
 Using Ruby API: https://github.com/resurfaceio/resurfaceio-logger-ruby
-
-## Running at Heroku
-
-    cd ~/resurfaceio-lastn
-    heroku create {appname}
-    git push heroku master
-    browse to http://{appname}.herokuapp.com/messages
-    
