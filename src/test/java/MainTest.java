@@ -1,5 +1,6 @@
 // Copyright (c) 2016 Resurface Labs LLC, All Rights Reserved
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 import org.junit.AfterClass;
@@ -28,29 +29,31 @@ public class MainTest {
 
     @Test
     public void testReadAndWrite() throws IOException {
-        assertEquals(get(), "<h1>0 messages</h1>");
-        assertEquals(post("A"), 200);
-        assertEquals(get(), "<h1>1 messages</h1><p><code>A</code></p>");
-        assertEquals(post("B"), 200);
-        assertEquals(get(), "<h1>2 messages</h1><p><code>B</code></p><p><code>A</code></p>");
-        assertEquals(post("C"), 200);
-        assertEquals(get(), "<h1>3 messages</h1><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
-        assertEquals(post("D"), 200);
-        assertEquals(get(), "<h1>4 messages</h1><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
-        assertEquals(post("E"), 200);
-        assertEquals(get(), "<h1>5 messages</h1><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code>A</code></p>");
-        assertEquals(post("F2"), 200);
-        assertEquals(get(), "<h1>5 messages</h1><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p>");
-        assertEquals(post("G G!"), 200);
-        assertEquals(get(), "<h1>5 messages</h1><p><code>G G!</code></p><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p>");
+        get("<h1>0 messages</h1>");
+        post("");
+        get("<h1>1 messages</h1><p><code></code></p>");
+        post("B");
+        get("<h1>2 messages</h1><p><code>B</code></p><p><code></code></p>");
+        post("C");
+        get("<h1>3 messages</h1><p><code>C</code></p><p><code>B</code></p><p><code></code></p>");
+        post("D");
+        get("<h1>4 messages</h1><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code></code></p>");
+        post("E");
+        get("<h1>5 messages</h1><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code></code></p>");
+        post("F2");
+        get("<h1>5 messages</h1><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p>");
+        post("G G!");
+        get("<h1>5 messages</h1><p><code>G G!</code></p><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p>");
     }
 
-    private String get() throws IOException {
-        return Request.Get(URL).execute().returnContent().asString();
+    private void get(String expected) throws IOException {
+        String response = Request.Get(URL).execute().returnContent().asString();
+        assertEquals(response, expected);
     }
 
-    private int post(String body) throws IOException {
-        return Request.Post(URL).bodyString(body, ContentType.DEFAULT_TEXT).execute().returnResponse().getStatusLine().getStatusCode();
+    private void post(String body) throws IOException {
+        HttpResponse response = Request.Post(URL).bodyString(body, ContentType.DEFAULT_TEXT).execute().returnResponse();
+        assertEquals(response.getStatusLine().getStatusCode(), 200);
     }
 
     private static final String URL = "http://localhost:9000/messages";
