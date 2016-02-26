@@ -29,21 +29,21 @@ public class MainTest {
 
     @Test
     public void testReadAndWrite() throws IOException {
-        get("<h1>0 messages</h1>");
+        get(preamble(0));
         post("");
-        get("<h1>1 messages</h1><p><code></code></p>");
+        get(preamble(1) + textarea(null));
         post("B");
-        get("<h1>2 messages</h1><p><code>B</code></p><p><code></code></p>");
+        get(preamble(2) + textarea("B") + textarea(null));
         post("C");
-        get("<h1>3 messages</h1><p><code>C</code></p><p><code>B</code></p><p><code></code></p>");
+        get(preamble(3) + textarea("C") + textarea("B") + textarea(null));
         post("D");
-        get("<h1>4 messages</h1><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code></code></p>");
+        get(preamble(4) + textarea("D") + textarea("C") + textarea("B") + textarea(null));
         post("E");
-        get("<h1>5 messages</h1><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p><p><code></code></p>");
+        get(preamble(5) + textarea("E") + textarea("D") + textarea("C") + textarea("B") + textarea(null));
         post("F2");
-        get("<h1>5 messages</h1><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p><p><code>B</code></p>");
+        get(preamble(5) + textarea("F2") + textarea("E") + textarea("D") + textarea("C") + textarea("B"));
         post("G G!");
-        get("<h1>5 messages</h1><p><code>G G!</code></p><p><code>F2</code></p><p><code>E</code></p><p><code>D</code></p><p><code>C</code></p>");
+        get(preamble(5) + textarea("G G!") + textarea("F2") + textarea("E") + textarea("D") + textarea("C"));
     }
 
     private void get(String expected) throws IOException {
@@ -54,6 +54,14 @@ public class MainTest {
     private void post(String body) throws IOException {
         HttpResponse response = Request.Post(URL).bodyString(body, ContentType.DEFAULT_TEXT).execute().returnResponse();
         assertEquals(response.getStatusLine().getStatusCode(), 200);
+    }
+
+    private String preamble(int messages) {
+        return "<head><style>textarea{width:800px;height:50px;}</style></head><h1>" + messages + " messages</h1>";
+    }
+
+    private String textarea(String content) {
+        return "<p><textarea>" + (content == null ? "" : content) + "</textarea></p>";
     }
 
     private static final String URL = "http://localhost:9000/messages";

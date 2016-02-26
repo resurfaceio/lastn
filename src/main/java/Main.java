@@ -19,10 +19,11 @@ public class Main {
 
         get("/messages", (request, response) -> {
             StringBuilder sb = new StringBuilder(1024);
+            sb.append("<head><style>textarea{width:800px;height:50px;}</style></head>");
             queueLock.readLock().lock();
             try {
                 sb.append("<h1>").append(queue.size()).append(" messages</h1>");
-                queue.forEach(item -> sb.append("<p><code>").append(item).append("</code></p>"));
+                queue.forEach(item -> sb.append("<p><textarea>").append(item).append("</textarea></p>"));
             } finally {
                 queueLock.readLock().unlock();
             }
