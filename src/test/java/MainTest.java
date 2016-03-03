@@ -29,7 +29,7 @@ public class MainTest {
     }
 
     @Test
-    public void testReadAndWrite() throws IOException {
+    public void testReadAndWriteAndReset() throws IOException {
         get(preamble(0));
         post("");
         get(preamble(1) + textarea(null));
@@ -45,6 +45,8 @@ public class MainTest {
         get(preamble(5) + textarea("F2") + textarea("E") + textarea("D") + textarea("C") + textarea("B"));
         post("G G!");
         get(preamble(5) + textarea("G G!") + textarea("F2") + textarea("E") + textarea("D") + textarea("C"));
+        reset("RESET OK");
+        get(preamble(0));
     }
 
     private void get(String expected) throws IOException {
@@ -57,8 +59,13 @@ public class MainTest {
         assertEquals(response.getStatusLine().getStatusCode(), 200);
     }
 
+    private void reset(String expected) throws IOException {
+        String response = Request.Get(URL + "/reset").execute().returnContent().asString();
+        assertEquals(response, expected);
+    }
+
     private String preamble(int messages) {
-        return "<head><style>textarea{width:800px;height:50px;}</style></head><h1>" + messages + " messages</h1>";
+        return "<head><style>textarea{width:1200px;height:50px;}</style></head><h1>" + messages + " messages</h1>";
     }
 
     private String textarea(String content) {

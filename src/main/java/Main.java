@@ -43,6 +43,17 @@ public class Main {
             halt(200);
             return null;
         });
+
+        get("/messages/reset", (request, response) -> {
+            queueLock.writeLock().lock();
+            try {
+                queue.clear();
+            } finally {
+                queueLock.writeLock().unlock();
+            }
+            return "RESET OK";
+        });
+
     }
 
 }
