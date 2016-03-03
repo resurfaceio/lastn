@@ -21,7 +21,7 @@ public class Main {
 
         get("/messages", (request, response) -> {
             StringBuilder sb = new StringBuilder(1024);
-            sb.append("<head><style>textarea{width:800px;height:50px;}</style></head>");
+            sb.append("<head><style>textarea{width:1200px;height:50px;}</style></head>");
             queueLock.readLock().lock();
             try {
                 sb.append("<h1>").append(queue.size()).append(" messages</h1>");
