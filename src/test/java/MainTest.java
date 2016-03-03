@@ -19,6 +19,7 @@ public class MainTest {
 
     @BeforeClass
     public static void beforeClass() {
+        Main.N = 5;
         Main.main(null);
     }
 

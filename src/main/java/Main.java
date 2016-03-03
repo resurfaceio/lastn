@@ -10,6 +10,8 @@ import static spark.Spark.*;
  */
 public class Main {
 
+    public static int N = 32;
+
     public static void main(String[] args) {
         String portstr = System.getenv("PORT");
         port(Integer.valueOf(portstr == null ? "9000" : portstr));
@@ -34,7 +36,7 @@ public class Main {
             queueLock.writeLock().lock();
             try {
                 queue.addFirst(request.body());
-                if (queue.size() == 6) queue.removeLast();
+                if (queue.size() > N) queue.removeLast();
             } finally {
                 queueLock.writeLock().unlock();
             }
