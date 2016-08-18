@@ -21,11 +21,13 @@ public class Main {
 
         get("/messages", (request, response) -> {
             StringBuilder sb = new StringBuilder(1024);
-            sb.append("<head><style>textarea{width:1200px;height:50px;}</style></head>");
+            sb.append("{");
             queueLock.readLock().lock();
             try {
-                sb.append("<h1>").append(queue.size()).append(" messages</h1>");
-                queue.forEach(item -> sb.append("<p><textarea>").append(item).append("</textarea></p>"));
+                sb.append("\"count\":\"").append(queue.size()).append("\",\"messages\":[");
+                int idx = 0;
+                for (String message : queue) sb.append(idx++ == 0 ? "" : ',').append(message);
+                sb.append("]}");
             } finally {
                 queueLock.readLock().unlock();
             }

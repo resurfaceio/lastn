@@ -30,23 +30,23 @@ public class MainTest {
 
     @Test
     public void testReadAndWriteAndReset() throws IOException {
-        get(preamble(0));
+        get(prefix(0) + POSTFIX);
         post("");
-        get(preamble(1) + textarea(null));
+        get(prefix(1) + POSTFIX);
         post("B");
-        get(preamble(2) + textarea("B") + textarea(null));
+        get(prefix(2) + "B," + POSTFIX);
         post("C");
-        get(preamble(3) + textarea("C") + textarea("B") + textarea(null));
+        get(prefix(3) + "C,B," + POSTFIX);
         post("D");
-        get(preamble(4) + textarea("D") + textarea("C") + textarea("B") + textarea(null));
+        get(prefix(4) + "D,C,B," + POSTFIX);
         post("E");
-        get(preamble(5) + textarea("E") + textarea("D") + textarea("C") + textarea("B") + textarea(null));
+        get(prefix(5) + "E,D,C,B," + POSTFIX);
         post("F2");
-        get(preamble(5) + textarea("F2") + textarea("E") + textarea("D") + textarea("C") + textarea("B"));
+        get(prefix(5) + "F2,E,D,C,B" + POSTFIX);
         post("G G!");
-        get(preamble(5) + textarea("G G!") + textarea("F2") + textarea("E") + textarea("D") + textarea("C"));
-        reset("RESET OK");
-        get(preamble(0));
+        get(prefix(5) + "G G!,F2,E,D,C" + POSTFIX);
+        reset();
+        get(prefix(0) + POSTFIX);
     }
 
     private void get(String expected) throws IOException {
@@ -59,19 +59,16 @@ public class MainTest {
         assertEquals(response.getStatusLine().getStatusCode(), 200);
     }
 
-    private void reset(String expected) throws IOException {
+    private String prefix(int count) {
+        return "{\"count\":\"" + count + "\",\"messages\":[";
+    }
+
+    private void reset() throws IOException {
         String response = Request.Get(URL + "/reset").execute().returnContent().asString();
-        assertEquals(response, expected);
+        assertEquals(response, "RESET OK");
     }
 
-    private String preamble(int messages) {
-        return "<head><style>textarea{width:1200px;height:50px;}</style></head><h1>" + messages + " messages</h1>";
-    }
-
-    private String textarea(String content) {
-        return "<p><textarea>" + (content == null ? "" : content) + "</textarea></p>";
-    }
-
+    private static final String POSTFIX = "]}";
     private static final String URL = "http://localhost:9000/messages";
 
 }
