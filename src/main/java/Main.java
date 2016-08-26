@@ -20,6 +20,7 @@ public class Main {
         ReentrantReadWriteLock queueLock = new ReentrantReadWriteLock();
 
         get("/messages", (request, response) -> {
+            response.type("text/plain");
             StringBuilder sb = new StringBuilder(1024);
             sb.append("{");
             queueLock.readLock().lock();
