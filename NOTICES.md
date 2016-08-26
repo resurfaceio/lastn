@@ -8,8 +8,8 @@ grateful to these developers for all their efforts.
 
 ### Apache
 
-https://hc.apache.org/ (Apache HttpComponents)<br>
-https://maven.apache.org/ (Apache Maven)<br>
+https://hc.apache.org - Apache HttpComponents<br>
+https://maven.apache.org - Apache Maven<br>
 Used under Apache License, Version 2
 
 Copyright &copy; 2016 The Apache Software Foundation
@@ -51,7 +51,7 @@ exception statement from your version.
 
 https://github.com/perwendel/spark<br>Used under Apache License, Version 2
 
-Copyright &copy; 2011- Per Wendel
+Copyright &copy; 2011-2016 Per Wendel
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this software except in compliance with the License. You may obtain a copy of the
 License here: http://www.apache.org/licenses/LICENSE-2.0
