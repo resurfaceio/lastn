@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Resurface Labs LLC, All Rights Reserved
+// Copyright (c) 2016-2017 Resurface Labs LLC, All Rights Reserved
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
