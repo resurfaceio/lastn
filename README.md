@@ -1,5 +1,5 @@
 # resurfaceio-lastn
-&copy; 2016-2017 Resurface Labs LLC, All Rights Reserved
+&copy; 2016-2017 Resurface Labs LLC
 
 ## Git Workflow 
 
