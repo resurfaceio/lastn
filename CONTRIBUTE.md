@@ -1,5 +1,5 @@
-# resurfaceio-logger-java
-&copy; 2016 Resurface Labs LLC
+# resurfaceio-lastn
+&copy; 2016-2017 Resurface Labs LLC
 
 ## Coding Conventions
 
