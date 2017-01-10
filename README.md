@@ -1,18 +1,6 @@
 # resurfaceio-lastn
 &copy; 2016-2017 Resurface Labs LLC
 
-## Git Workflow 
-
-    git clone git@github.com:resurfaceio/resurfaceio-lastn.git ~/resurfaceio-lastn
-    cd ~/resurfaceio-lastn
-    git pull
-    (make changes)
-    git status                                (review changes)
-    git add -A
-    git commit -m "#123 Updated readme"       (123 is the GitHub issue number)
-    git pull
-    git push origin master
-
 ## Build System 
 
 Standard Maven for building & testing code, nothing special.
