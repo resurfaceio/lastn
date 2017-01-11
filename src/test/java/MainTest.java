@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2017 Resurface Labs LLC
+// © 2016-2017 Resurface Labs LLC
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
