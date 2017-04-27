@@ -7,13 +7,11 @@ Standard Maven for building & testing code, nothing special.
 
 ## Running Locally
 
-    cd ~/resurfaceio-lastn
     heroku local
     browse to http://localhost:5000/messages
 
 ## Running at Heroku
 
-    cd ~/resurfaceio-lastn
     heroku create {appname}
     git push heroku master
     browse to http://{appname}.herokuapp.com/messages
@@ -22,6 +20,6 @@ Standard Maven for building & testing code, nothing special.
 
     echo '"hello"' | curl -X POST -d @- http://localhost:5000/messages
 
-Using Java API: https://github.com/resurfaceio/resurfaceio-logger-java
+Using Java API: https://github.com/resurfaceio/logger-java
 
-Using Ruby API: https://github.com/resurfaceio/resurfaceio-logger-ruby
+Using Ruby API: https://github.com/resurfaceio/logger-ruby

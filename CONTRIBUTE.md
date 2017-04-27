@@ -9,7 +9,7 @@ If you don't use IDEA, that's ok, but your code may get reformatted.
 ## Git Workflow
 
 ```
-git clone git@github.com:resurfaceio/resurfaceio-lastn.git
+git clone git@github.com:resurfaceio/lastn.git resurfaceio-lastn
 cd resurfaceio-lastn
 ```
 

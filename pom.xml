@@ -9,7 +9,7 @@
     <version>1.6.1-SNAPSHOT</version>
     <name>resurfaceio-lastn</name>
     <description>Tracks last n messages</description>
-    <url>https://github.com/resurfaceio/resurfaceio-lastn</url>
+    <url>https://github.com/resurfaceio/lastn</url>
 
     <build>
         <plugins>
@@ -82,7 +82,7 @@
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/resurfaceio/resurfaceio-lastn/issues</url>
+        <url>https://github.com/resurfaceio/lastn/issues</url>
     </issueManagement>
 
     <licenses>
@@ -103,8 +103,8 @@
     </organization>
 
     <scm>
-        <connection>scm:git:git@github.com:resurfaceio/resurfaceio-lastn.git</connection>
-        <developerConnection>scm:git:git@github.com:resurfaceio/resurfaceio-lastn.git</developerConnection>
-        <url>scm:git:git@github.com:resurfaceio/resurfaceio-lastn.git</url>
+        <connection>scm:git:git@github.com:resurfaceio/lastn.git</connection>
+        <developerConnection>scm:git:git@github.com:resurfaceio/lastn.git</developerConnection>
+        <url>scm:git:git@github.com:resurfaceio/lastn.git</url>
     </scm>
 </project>
