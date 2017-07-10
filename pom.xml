@@ -43,6 +43,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.mscharhag.oleaster</groupId>
+            <artifactId>oleaster-matcher</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
             <version>RELEASE</version>
