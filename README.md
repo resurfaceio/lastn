@@ -1,12 +1,15 @@
 # resurfaceio-lastn
 &copy; 2016-2017 Resurface Labs LLC
 
+Simple listener for Heroku that tracks the last N messages received.
+
 ## Build System 
 
 Standard Maven for building & testing code, nothing special.
 
 ## Running Locally
 
+    mvn install
     heroku local
     browse to http://localhost:5000/messages
 
@@ -19,7 +22,3 @@ Standard Maven for building & testing code, nothing special.
 ## Sending Messages
 
     echo '"hello"' | curl -X POST -d @- http://localhost:5000/messages
-
-Using Java API: https://github.com/resurfaceio/logger-java
-
-Using Ruby API: https://github.com/resurfaceio/logger-ruby
