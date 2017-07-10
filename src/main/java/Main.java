@@ -43,8 +43,7 @@ public class Main {
             } finally {
                 queueLock.writeLock().unlock();
             }
-            halt(200);
-            return null;
+            throw halt(204);
         });
 
         get("/messages/reset", (request, response) -> {
@@ -56,7 +55,6 @@ public class Main {
             }
             return "RESET OK";
         });
-
     }
 
 }

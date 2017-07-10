@@ -10,7 +10,7 @@ import spark.Spark;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static com.mscharhag.oleaster.matcher.Matchers.expect;
 
 /**
  * Tests against Heroku app that tracks last n messages.
@@ -51,12 +51,12 @@ public class MainTest {
 
     private void get(String expected) throws IOException {
         String response = Request.Get(URL).execute().returnContent().asString();
-        assertEquals(response, expected);
+        expect(response).toEqual(expected);
     }
 
     private void post(String body) throws IOException {
         HttpResponse response = Request.Post(URL).bodyString(body, ContentType.DEFAULT_TEXT).execute().returnResponse();
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        expect(response.getStatusLine().getStatusCode()).toEqual(204);
     }
 
     private String prefix(int count) {
@@ -65,7 +65,7 @@ public class MainTest {
 
     private void reset() throws IOException {
         String response = Request.Get(URL + "/reset").execute().returnContent().asString();
-        assertEquals(response, "RESET OK");
+        expect(response).toEqual("RESET OK");
     }
 
     private static final String POSTFIX = "]}";
