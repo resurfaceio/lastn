@@ -1,7 +1,9 @@
 // © 2016-2017 Resurface Labs LLC
 
+import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.zip.Inflater;
 
 import static spark.Spark.*;
 
@@ -36,9 +38,25 @@ public class Main {
         });
 
         post("/messages", (request, response) -> {
+            String body;
+            if (!"deflated".equals(request.headers("Content-Encoding"))) {
+                body = request.body();
+            } else {
+                try {
+                    Inflater inflater = new Inflater();
+                    inflater.setInput(request.bodyAsBytes());
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[64];
+                    while (!inflater.finished()) baos.write(buffer, 0, inflater.inflate(buffer));
+                    body = baos.toString();
+                } catch (Throwable t) {
+                    throw halt(500);
+                }
+            }
+
             queueLock.writeLock().lock();
             try {
-                queue.addFirst(request.body());
+                queue.addFirst(body);
                 if (queue.size() > N) queue.removeLast();
             } finally {
                 queueLock.writeLock().unlock();
