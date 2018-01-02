@@ -1,4 +1,4 @@
-// © 2016-2017 Resurface Labs LLC
+// © 2016-2018 Resurface Labs LLC
 
 import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
