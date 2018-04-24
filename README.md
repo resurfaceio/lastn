@@ -1,7 +1,7 @@
 # resurfaceio-lastn
 &copy; 2016-2018 Resurface Labs LLC
 
-Simple listener for Heroku that tracks the last N messages received.
+Heroku test app that tracks the last N messages received.
 
 ## Build System 
 
