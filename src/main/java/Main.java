@@ -40,8 +40,10 @@ public class Main {
         post("/messages", (request, response) -> {
             String body;
             if (!"deflated".equals(request.headers("Content-Encoding"))) {
+                System.out.println("Request is not deflated");
                 body = request.body();
             } else {
+                System.out.println("Attempting to deflate");
                 try {
                     Inflater inflater = new Inflater();
                     inflater.setInput(request.bodyAsBytes());
