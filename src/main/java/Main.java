@@ -52,6 +52,7 @@ public class Main {
                     while (!inflater.finished()) baos.write(buffer, 0, inflater.inflate(buffer));
                     body = baos.toString();
                 } catch (Throwable t) {
+                    t.printStackTrace();
                     throw halt(500);
                 }
             }
